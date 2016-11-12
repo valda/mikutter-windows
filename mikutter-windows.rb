@@ -4,6 +4,10 @@ require 'rubygems'
 require 'Win32API'
 require File.join(File.absolute_path(File.dirname(__FILE__)), "common.rb")
 
+# アプリケーションユーザーモデルID(AppID)を宣言
+setappid = Win32API.new('Shell32', 'SetCurrentProcessExplicitAppUserModelID', 'p', 'l')
+setappid.call('TOTORI.Mikutter'.encode('UTF-16LE'))
+
 # パッチをロードする
 apply_patches("")
 
